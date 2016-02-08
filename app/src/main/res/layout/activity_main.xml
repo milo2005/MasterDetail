@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.estacionvl_tc_014.masterdetail.MainActivity">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/master"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.estacionvl_tc_014.masterdetail.fragments.MasterFragment"
-        tools:layout="@layout/f_master" />
+        />
 
 </RelativeLayout>
