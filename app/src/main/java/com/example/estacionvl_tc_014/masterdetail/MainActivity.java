@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements MasterFragment.Ma
     MasterFragment master;
     DetailFragment detail;
 
-    boolean phone, land;
+    boolean phone, land, detailF;
 
     String colors[];
     int colorV[];
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements MasterFragment.Ma
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_main);
+
+        detailF  =false;
 
         colors = getResources().getStringArray(R.array.colores);
         colorV = getResources().getIntArray(R.array.colores_valor);
@@ -48,11 +50,21 @@ public class MainActivity extends AppCompatActivity implements MasterFragment.Ma
 
         detail.setColor(colors[pos], colorV[pos]);
 
-        if(phone || (!phone && !land))
+        if(phone || (!phone && !land)) {
             putFragment(R.id.master, detail);
+            detailF = true;
+        }
 
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        if(detailF){
+         putFragment(R.id.master,master);
+        }else {
+            super.onBackPressed();
+        }
     }
 
     public void putFragment(int container, Fragment fragment){

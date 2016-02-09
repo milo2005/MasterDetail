@@ -18,17 +18,10 @@ public class DetailFragment extends Fragment {
 
     TextView txt;
     String color;
-    int colorValor;
+    int colorValor = 0;
 
     public DetailFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        colorValor = ContextCompat.getColor(getActivity(),R.color.azul);
-        color = getActivity().getString(R.string.azul);
     }
 
     @Override
@@ -37,6 +30,12 @@ public class DetailFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
 
         txt = (TextView) v.findViewById(R.id.txt);
+
+        if(colorValor == 0){
+            colorValor = ContextCompat.getColor(getActivity(),R.color.azul);
+            color = getActivity().getString(R.string.azul);
+        }
+
         txt.setText(color);
         txt.setBackgroundColor(colorValor);
 
@@ -52,5 +51,6 @@ public class DetailFragment extends Fragment {
             txt.setBackgroundColor(colorValor);
         }
     }
+
 
 }
